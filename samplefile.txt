@@ -1,0 +1,11 @@
+line #1
+line #2
+line #3
+line #4
+line #5
+line #6
+line #7
+line #8
+line #9
+line #10
+The Eurotherm temperature controller allows the user to program a temperature profile manually. The Eurotherm is in manual mode by default but will change to auto mode when the test begins. the user must change it to manual mode after the test has started
