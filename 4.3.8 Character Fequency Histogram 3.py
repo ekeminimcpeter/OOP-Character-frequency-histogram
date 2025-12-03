@@ -15,27 +15,25 @@ if not os.path.splitext(srcname)[1]:
     srcname += ".txt"
 
 try:
-    src = open(srcname, 'rt') #open source file object
-    text_line = src.readline().lower()  #Read lines contents from source file, normalize case (lowercase) and return as string
+    with open(srcname, 'rt') as src:
+        counts = Counter()
+        has_content = False
 
-    while text_line != '':
+        for line in src:
+            has_content = True
+            counts.update(ch for ch in line.lower() if ch.isalpha())
 
-        # Count letters
-        counts = Counter(ch for ch in text_line if ch.isalpha())
-        text_line = src.readline().lower()
-
-    else: # Notify user and end program when file has not content.
+    if not has_content:
         print("Nothing to display. File has no content!")
-        sys.exit() 
-
-    src.close()
+        sys.exit()
 
     # Sort alphabetically and print
     for letter in sorted(counts):
         print(f"{letter} -> {counts[letter]}")
-    
+
 except IOError as e:
     print("Cannot open the source file: ", strerror(e.errno))
+    
     			
     
 
